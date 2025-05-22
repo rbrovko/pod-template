@@ -91,9 +91,6 @@ module Pod
       rename_template_files
       add_pods_to_podfile
       customise_prefix
-      rename_classes_folder
-      ensure_carthage_compatibility
-      reinitialize_git_repo
       run_pod_install
 
       @message_bank.farewell_message
