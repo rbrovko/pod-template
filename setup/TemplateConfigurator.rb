@@ -91,6 +91,8 @@ module Pod
       rename_template_files
       add_pods_to_podfile
       customise_prefix
+      rename_classes_folder
+      remove_git_repo
       run_pod_install
 
       @message_bank.farewell_message
@@ -175,7 +177,14 @@ module Pod
     end
 
     def rename_classes_folder
-      FileUtils.mv "Pod", @pod_name
+      FileUtils.mv "Sources", @pod_name
+      FileUtils.mv "Tests", @pod_name
+    end
+
+    def remove_git_repo
+      `rm -rf .git`
+      `rm .gitignore`
+      `rm .travis.yml`
     end
 
     def reinitialize_git_repo
