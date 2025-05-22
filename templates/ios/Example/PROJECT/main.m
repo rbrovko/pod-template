@@ -11,7 +11,12 @@
 
 int main(int argc, char * argv[])
 {
+    NSString *appDelegateClassName;
     @autoreleasepool {
-        return UIApplicationMain(argc, argv, nil, NSStringFromClass([CPDAppDelegate class]));
+        if (!NSClassFromString(@"XCTestCase")) {
+            appDelegateClassName = NSStringFromClass([CPDAppDelegate class]);
+        }
+        
+        return UIApplicationMain(argc, argv, nil, appDelegateClassName);
     }
 }
